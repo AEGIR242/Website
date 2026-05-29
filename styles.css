@@ -644,6 +644,25 @@ h1, h2, h3, h4 {
   gap: 10px;
   margin-bottom: 1rem;
 }
+
+/* Imagen única — centrada y grande */
+.img-single {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.img-single .img-grid-item {
+  max-width: 720px;
+  width: 100%;
+  aspect-ratio: auto;
+  height: auto;
+}
+.img-single .img-grid-item img {
+  object-fit: contain;
+  height: auto;
+  max-height: 600px;
+  width: 100%;
+}
 .img-grid-item {
   border-radius: var(--radius-sm);
   overflow: hidden;
