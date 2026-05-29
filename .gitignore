@@ -1,0 +1,14 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Editores
+.vscode/
+*.swp
+*.swo
+
+# Video de 106MB — supera el límite de GitHub (100MB)
+# Reemplazar por embed de YouTube/Vimeo cuando esté listo
+DiseñoDeMovimiento/Medialab - Relapse.mp4

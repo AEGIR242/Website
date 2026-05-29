@@ -1,0 +1,25 @@
+# Detectar automáticamente texto vs binario
+* text=auto
+
+# Archivos de texto — forzar LF (evita conflictos Windows/Linux)
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.txt   text eol=lf
+
+# Archivos binarios — sin conversión de líneas ni diff de texto
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.mp4   binary
+*.webm  binary
+*.mov   binary
+*.pdf   binary
+*.ttf   binary
+*.woff  binary
+*.woff2 binary
