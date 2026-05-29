@@ -550,15 +550,17 @@ h1, h2, h3, h4 {
 }
 .project-desc { color: var(--muted); font-size: 0.925rem; max-width: 700px; }
 
-/* Large featured video */
+/* Large featured video — tamaño natural, centrado */
 .video-featured {
-  width: 100%;
+  max-width: 100%;
+  max-height: 65vh;
+  width: auto;
   height: auto;
+  display: block;
+  margin: 0 auto 2rem;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: #000;
-  display: block;
-  margin-bottom: 2rem;
   transition: var(--ease);
 }
 .video-featured:hover {
@@ -580,22 +582,49 @@ h1, h2, h3, h4 {
 
 .carousel { position: relative; }
 .carousel-track {
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: #000;
+  min-height: 120px;
   transition: var(--ease);
 }
 .carousel-track:hover { border-color: rgba(0,212,255,0.25); }
 
 .carousel-item { display: none; }
-.carousel-item.active { display: block; }
+.carousel-item.active {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 .carousel-item video {
+  max-width: 100%;
+  max-height: 65vh;
+  width: auto;
+  height: auto;
+  display: block;
+  background: #000;
+}
+
+/* Grid de videos verticales — varios en fila */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+.video-grid video {
   width: 100%;
   height: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
   background: #000;
   display: block;
+  transition: var(--ease);
 }
+.video-grid video:hover { border-color: rgba(0,212,255,0.3); }
 
 .carousel-controls {
   display: flex;
@@ -704,12 +733,15 @@ h1, h2, h3, h4 {
 }
 
 .video-single {
-  width: 100%;
+  max-width: 100%;
+  max-height: 65vh;
+  width: auto;
   height: auto;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: #000;
   display: block;
+  margin: 0 auto;
   transition: var(--ease);
 }
 .video-single:hover { border-color: rgba(0,212,255,0.28); }
