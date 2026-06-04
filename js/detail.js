@@ -12,8 +12,9 @@
   const arr = (k)=> (window.I18N[lang] && Array.isArray(window.I18N[lang][k])) ? window.I18N[lang][k] : [];
   const esc = (s)=> String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-  /* encode a relative file path for use as a URL (preserves slashes) */
-  const mu = (p) => encodeURI(p);
+  /* base URL para medios alojados en el repositorio GitHub */
+  const MEDIA_BASE = 'https://raw.githubusercontent.com/AEGIR242/Website/master/';
+  const mu = (p) => MEDIA_BASE + encodeURI(p);
 
   /* ---------- projects ---------- */
   const PROJECTS = {
