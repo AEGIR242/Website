@@ -180,6 +180,10 @@ window.I18N = {
 
     lbl_process:"Proceso",
     lbl_builds:"Builds y enlaces",
+    lbl_docs:"Documentos",
+    download_pdf:"Ver PDF",
+    rythian_artbook:"Libro de Arte Definitivo",
+    rythian_artbook_note:"Documento completo de concept art, identidad visual y worldbuilding del universo Rythian.",
     hint_img:"Arrastra tus imágenes a los espacios",
     hint_vid:"Pega la URL de tu video (YouTube, Vimeo o MP4)",
     download_apk:"Descargar APK",
@@ -363,6 +367,10 @@ window.I18N = {
 
     lbl_process:"Process",
     lbl_builds:"Builds & links",
+    lbl_docs:"Documents",
+    download_pdf:"View PDF",
+    rythian_artbook:"Definitive Art Book",
+    rythian_artbook_note:"Full document of concept art, visual identity and worldbuilding for the Rythian universe.",
     hint_img:"Drag your images into the slots",
     hint_vid:"Paste your video URL (YouTube, Vimeo or MP4)",
     download_apk:"Download APK",

@@ -21,7 +21,8 @@
     relapse:{ title:'Relapse', type:'relapse_type', long:'relapse_long', pts:'relapse_pts', role:'relapse_role',
       tags:['Unity','VR','MR','Cyberpunk','Game Design','Interactive Systems','Technical Art'], images:0, videos:0 },
     rythian:{ title:'Rythian', type:'rythian_type', long:'rythian_long', pts:'rythian_pts', role:'rythian_role',
-      tags:['Worldbuilding','Narrative Design','Visual Development','Fantasy','Character Concepts','Environment Concepts'], images:3, videos:2 },
+      tags:['Worldbuilding','Narrative Design','Visual Development','Fantasy','Character Concepts','Environment Concepts'], images:3, videos:2,
+      docs:[{ title:'rythian_artbook', note:'rythian_artbook_note', url: mu('Rythian/Libro de Arte Definitivo.pdf'), btn:'download_pdf', icon:'↓' }] },
     smk:{ title:'SMK Showreel', type:'smk_type', long:'smk_long', pts:'smk_pts', role:'smk_role',
       tags:['2D Animation','Video Editing','Motion Design','Mascot Animation','Marketing Visuals','Audiovisual Production'], images:1, videos:5 },
   };
@@ -175,6 +176,20 @@
     }
   }
 
+  /* ---------- docs (PDF / downloads) ---------- */
+  function buildDocs(docs){
+    const wrap = $('#ov-docs'); if(!wrap) return;
+    docs.forEach(d=>{
+      const card = document.createElement('div'); card.className='build-card';
+      card.innerHTML = `<div class="bc-info"><div class="bc-t">${esc(t(d.title))}</div><div class="bc-n">${esc(t(d.note))}</div></div>`;
+      const a = document.createElement('a'); a.className='btn btn-primary';
+      a.href = d.url; a.target='_blank'; a.rel='noopener';
+      a.textContent = t(d.btn)+' '+d.icon;
+      card.appendChild(a);
+      wrap.appendChild(card);
+    });
+  }
+
   /* ---------- builds & links ---------- */
   function renderLink(card, b){
     card.innerHTML = `<div class="bc-info"><div class="bc-t">${esc(t(b.title))}</div><div class="bc-n">${esc(t(b.note))}</div></div>`;
@@ -229,8 +244,10 @@
       <p class="ov-sub">${t('highlights')}</p>
       <ul class="ov-pts">${pts}</ul>
       <div class="ov-tags">${tags}</div>
+      ${p.docs ? `<div class="ov-section"><p class="ov-sub">${t('lbl_docs')}</p><div id="ov-docs"></div></div>` : ''}
       ${hasMedia ? `<div class="ov-section"><p class="ov-sub">${t('gallery')}</p><div class="gal" id="ov-gal"></div></div>` : ''}
     </div>`;
+    if(p.docs) buildDocs(p.docs);
     if(hasMedia) buildMedia(key, p.images||0, p.videos||0, MEDIA_DEFAULTS[key]);
   }
 
