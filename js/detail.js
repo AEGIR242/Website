@@ -144,6 +144,8 @@
       return `<iframe src="https://www.youtube.com/embed/${m[1]}" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>`;
     if((m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/)))
       return `<iframe src="https://player.vimeo.com/video/${m[1]}" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe>`;
+    if(/drive\.google\.com/.test(url))
+      return `<iframe src="${esc(url)}" allow="autoplay" allowfullscreen></iframe>`;
     if(/\.(mp4|webm|ogg|mov)(\?|#|$)/i.test(url))
       return `<video src="${esc(url)}" controls playsinline></video>`;
     return `<iframe src="${esc(url)}" allowfullscreen></iframe>`;
