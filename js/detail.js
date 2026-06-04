@@ -30,8 +30,8 @@
   /* ---------- creative areas ---------- */
   const AREAS = {
     'game-dev':   { title:'area_1',  desc:'area_d_1', builds:[
-                      { title:'gd_relapse', note:'gd_relapse_note', id:'gd-relapse', btn:'download_apk', icon:'↓', ph:'ph_apk' },
-                      { title:'gd_cashout', note:'gd_cashout_note', id:'gd-cashout', btn:'play_web',     icon:'↗', ph:'ph_link' } ] },
+                      { title:'gd_relapse', note:'gd_relapse_note', id:'gd-relapse', btn:'download_apk', icon:'↓', disabled:true },
+                      { title:'gd_cashout', note:'gd_cashout_note', id:'gd-cashout', btn:'play_web',     icon:'↗', defaultUrl:'https://aegir242.github.io/CashOutPage/' } ] },
     '2d-anim':    { title:'area_3',  desc:'area_d_3',  videos:2 },
     '3d-model':   { title:'area_4',  desc:'area_d_4',  images:3 },
     '3d-anim':    { title:'area_5',  desc:'area_d_5',  videos:2 },
@@ -145,29 +145,12 @@
     return `<iframe src="${esc(url)}" allowfullscreen></iframe>`;
   }
   function renderVideo(box, id, defaultUrl){
-    const key = 'aegir_vid_'+id;
-    const url = localStorage.getItem(key) || defaultUrl || null;
+    const url = localStorage.getItem('aegir_vid_'+id) || defaultUrl || null;
     box.innerHTML = '';
     if(url){
       const frame = document.createElement('div'); frame.className='vid-frame';
       frame.innerHTML = videoEmbed(url);
-      const rm = document.createElement('button'); rm.className='vid-remove'; rm.type='button';
-      rm.textContent = '✕ '+t('remove_video');
-      rm.onclick = ()=>{ localStorage.removeItem(key); renderVideo(box,id,defaultUrl); };
-      frame.appendChild(rm);
       box.appendChild(frame);
-    } else {
-      const wrap = document.createElement('div'); wrap.className='vid-empty';
-      const lab = document.createElement('div'); lab.className='vl'; lab.textContent='▶ '+t('video_label');
-      const row = document.createElement('div'); row.className='vid-row';
-      const inp = document.createElement('input'); inp.type='url'; inp.placeholder=t('ph_video');
-      const btn = document.createElement('button'); btn.type='button'; btn.className='btn btn-primary'; btn.textContent=t('add_video');
-      const save = ()=>{ const v=inp.value.trim(); if(!v) return; localStorage.setItem(key,v); renderVideo(box,id); };
-      btn.onclick = save;
-      inp.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); save(); } });
-      row.appendChild(inp); row.appendChild(btn);
-      wrap.appendChild(lab); wrap.appendChild(row);
-      box.appendChild(wrap);
     }
   }
 
@@ -175,46 +158,44 @@
   function buildMedia(prefix, images, videos, defaults){
     const gal = $('#ov-gal'); if(!gal) return;
     for(let i=1;i<=images;i++){
+      const defImg = defaults && defaults.images && defaults.images[i-1];
+      if(!defImg) continue;
       const s = document.createElement('image-slot');
       s.id = 'aegir-'+prefix+'-img'+i;
       s.setAttribute('shape','rounded');
       s.setAttribute('radius','8');
-      s.setAttribute('placeholder', t('drop_img'));
-      const defImg = defaults && defaults.images && defaults.images[i-1];
-      if(defImg) s.setAttribute('src', defImg);
+      s.setAttribute('src', defImg);
       gal.appendChild(s);
     }
     for(let j=1;j<=videos;j++){
+      const defVid = defaults && defaults.videos && defaults.videos[j-1];
+      const stored  = localStorage.getItem('aegir_vid_'+prefix+'-vid'+j);
+      if(!defVid && !stored) continue;
       const vs = document.createElement('div'); vs.className='vid-slot';
       gal.appendChild(vs);
-      const defVid = defaults && defaults.videos && defaults.videos[j-1];
       renderVideo(vs, prefix+'-vid'+j, defVid || null);
     }
   }
 
   /* ---------- builds & links ---------- */
   function renderLink(card, b){
-    const key = 'aegir_link_'+b.id;
-    const url = localStorage.getItem(key);
     card.innerHTML = `<div class="bc-info"><div class="bc-t">${esc(t(b.title))}</div><div class="bc-n">${esc(t(b.note))}</div></div>`;
-    if(url){
-      const grp = document.createElement('div'); grp.className='bc-actions';
-      const a = document.createElement('a'); a.className='btn btn-primary'; a.href=url; a.target='_blank'; a.rel='noopener';
-      a.textContent = t(b.btn)+' '+b.icon;
-      const ed = document.createElement('button'); ed.type='button'; ed.className='bc-edit'; ed.textContent=t('edit_link');
-      ed.onclick = ()=>{ localStorage.removeItem(key); renderLink(card,b); };
-      grp.appendChild(a); grp.appendChild(ed);
-      card.appendChild(grp);
+    const grp = document.createElement('div'); grp.className='bc-actions';
+    if(b.disabled){
+      const btn = document.createElement('button'); btn.type='button'; btn.className='btn btn-primary';
+      btn.textContent = t(b.btn)+' '+b.icon;
+      btn.disabled = true; btn.style.cssText='opacity:.4;cursor:not-allowed';
+      grp.appendChild(btn);
     } else {
-      const row = document.createElement('div'); row.className='vid-row';
-      const inp = document.createElement('input'); inp.type='url'; inp.placeholder=t(b.ph);
-      const btn = document.createElement('button'); btn.type='button'; btn.className='btn btn-primary'; btn.textContent=t('add_link');
-      const save = ()=>{ const v=inp.value.trim(); if(!v) return; localStorage.setItem(key,v); renderLink(card,b); };
-      btn.onclick = save;
-      inp.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); save(); } });
-      row.appendChild(inp); row.appendChild(btn);
-      card.appendChild(row);
+      const url = b.defaultUrl || localStorage.getItem('aegir_link_'+b.id);
+      if(url){
+        const a = document.createElement('a'); a.className='btn btn-primary';
+        a.href=url; a.target='_blank'; a.rel='noopener';
+        a.textContent = t(b.btn)+' '+b.icon;
+        grp.appendChild(a);
+      }
     }
+    card.appendChild(grp);
   }
   function buildBuilds(builds){
     const wrap = $('#ov-builds'); if(!wrap) return;
@@ -251,7 +232,6 @@
       <div class="ov-tags">${tags}</div>
       <div class="ov-section">
         <p class="ov-sub">${t('gallery')}</p>
-        <p class="ov-hint">${galHint(p.images,p.videos)}</p>
         <div class="gal" id="ov-gal"></div>
       </div>
     </div>`;
@@ -270,7 +250,7 @@
       html += `<div class="ov-section"><p class="ov-sub">${t('lbl_builds')}</p><div id="ov-builds"></div></div>`;
     }
     if(c.images || c.videos){
-      html += `<div class="ov-section"><p class="ov-sub">${t('gallery')}</p><p class="ov-hint">${galHint(c.images,c.videos)}</p><div class="gal" id="ov-gal"></div></div>`;
+      html += `<div class="ov-section"><p class="ov-sub">${t('gallery')}</p><div class="gal" id="ov-gal"></div></div>`;
     }
     html += '</div>';
     panel.innerHTML = html;
