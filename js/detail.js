@@ -12,14 +12,17 @@
   const arr = (k)=> (window.I18N[lang] && Array.isArray(window.I18N[lang][k])) ? window.I18N[lang][k] : [];
   const esc = (s)=> String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
+  /* encode a relative file path for use as a URL (preserves slashes) */
+  const mu = (p) => encodeURI(p);
+
   /* ---------- projects ---------- */
   const PROJECTS = {
     relapse:{ title:'Relapse', type:'relapse_type', long:'relapse_long', pts:'relapse_pts', role:'relapse_role',
-      tags:['Unity','VR','MR','Cyberpunk','Game Design','Interactive Systems','Technical Art'], images:5, videos:1 },
+      tags:['Unity','VR','MR','Cyberpunk','Game Design','Interactive Systems','Technical Art'], images:1, videos:3 },
     rythian:{ title:'Rythian', type:'rythian_type', long:'rythian_long', pts:'rythian_pts', role:'rythian_role',
-      tags:['Worldbuilding','Narrative Design','Visual Development','Fantasy','Character Concepts','Environment Concepts'], images:5, videos:1 },
+      tags:['Worldbuilding','Narrative Design','Visual Development','Fantasy','Character Concepts','Environment Concepts'], images:3, videos:2 },
     smk:{ title:'SMK Showreel', type:'smk_type', long:'smk_long', pts:'smk_pts', role:'smk_role',
-      tags:['2D Animation','Video Editing','Motion Design','Mascot Animation','Marketing Visuals','Audiovisual Production'], images:5, videos:1 },
+      tags:['2D Animation','Video Editing','Motion Design','Mascot Animation','Marketing Visuals','Audiovisual Production'], images:1, videos:2 },
   };
   const PORDER = ['relapse','rythian','smk'];
 
@@ -28,16 +31,104 @@
     'game-dev':   { title:'area_1',  desc:'area_d_1', builds:[
                       { title:'gd_relapse', note:'gd_relapse_note', id:'gd-relapse', btn:'download_apk', icon:'↓', ph:'ph_apk' },
                       { title:'gd_cashout', note:'gd_cashout_note', id:'gd-cashout', btn:'play_web',     icon:'↗', ph:'ph_link' } ] },
-    '2d-anim':    { title:'area_3',  desc:'area_d_3',  videos:1 },
+    '2d-anim':    { title:'area_3',  desc:'area_d_3',  videos:2 },
     '3d-model':   { title:'area_4',  desc:'area_d_4',  images:3 },
     '3d-anim':    { title:'area_5',  desc:'area_d_5',  videos:2 },
     'shaders':    { title:'area_6',  desc:'area_d_6',  process:'shaders_process', images:4 },
-    'pixel-art':  { title:'area_7',  desc:'area_d_7',  images:4 },
+    'pixel-art':  { title:'area_7',  desc:'area_d_7',  images:3 },
     'audio':      { title:'area_8',  desc:'area_d_8',  videos:1 },
     'clips':      { title:'area_9',  desc:'area_d_9',  videos:2 },
     'audiovisual':{ title:'area_10', desc:'area_d_10', images:3, videos:1 },
   };
   const AORDER = ['game-dev','2d-anim','3d-model','3d-anim','shaders','pixel-art','audio','clips','audiovisual'];
+
+  /* ---------- default media per section ---------- */
+  const MEDIA_DEFAULTS = {
+    /* ---- projects ---- */
+    relapse: {
+      images: [
+        mu('DiseñoDeMovimiento/Captura de pantalla 2026-05-29 123529.png'),
+      ],
+      videos: [
+        mu('DiseñoDeMovimiento/Movie_001.webm'),
+        mu('DiseñoDeMovimiento/Movie_002.webm'),
+        mu('DiseñoDeMovimiento/Movie_004.webm'),
+      ],
+    },
+    rythian: {
+      images: [
+        mu('Rythian/Captura de pantalla 2023-11-26 181608.png'),
+        mu('Rythian/Captura de pantalla 2023-11-26 181649.png'),
+        mu('Rythian/Captura de pantalla 2023-11-27 101256.png'),
+      ],
+      videos: [
+        mu('Animacion2D/Rythian/AnimaciónFinal.mp4'),
+        mu('Animacion3D/Rythian/AnimacionFinal.mp4'),
+      ],
+    },
+    smk: {
+      images: [
+        mu('SMK/CharacterSheet/BartenderHojaV1.png'),
+      ],
+      videos: [
+        mu('SMK/ProyectoFinal (1).mp4'),
+        mu('SMK/Animaciones/IntroSMKV9.mp4'),
+      ],
+    },
+    /* ---- areas ---- */
+    '2d-anim': {
+      videos: [
+        mu('Animacion2D/Bolsa (2).mp4'),
+        mu('SMK/Animaciones/Animacion1.mp4'),
+      ],
+    },
+    '3d-model': {
+      images: [
+        mu('Modelado3D/destornillador.png'),
+        mu('Modelado3D/lapicero.png'),
+        mu('Modelado3D/Muñeco (2).jpg'),
+      ],
+    },
+    '3d-anim': {
+      videos: [
+        mu('Animacion3D/Lipsync.mp4'),
+        mu('Animacion3D/Rythian/AnimacionFinal.mp4'),
+      ],
+    },
+    shaders: {
+      images: [
+        mu('Shaders/ShaderHolograma/Captura de pantalla 2026-05-15 151357.png'),
+        mu('Shaders/ShaderHolograma/Captura de pantalla 2026-05-15 163639.png'),
+        mu('Shaders/ShaderPixelArt/Captura de pantalla 2026-05-15 164207.png'),
+        mu('Shaders/ShaderPixelArt/image (1).png'),
+      ],
+    },
+    'pixel-art': {
+      images: [
+        mu('PixelArt/QuimeraFinalizada.png'),
+        mu('PixelArt/QuimeraChiquita.png'),
+        mu('PixelArt/pixil-frame-0 (1).png'),
+      ],
+    },
+    audio: {
+      videos: [
+        mu('EdicionDeAudio/Comercial.mp4'),
+      ],
+    },
+    clips: {
+      videos: [
+        mu('Videoclips/Videoclip-La ultima.mp4'),
+        mu('Videoclips/Videoclip Lenguajes.mp4'),
+      ],
+    },
+    audiovisual: {
+      images: [
+        mu('TrabajosIndependientes/Draikon.png'),
+        mu('TrabajosIndependientes/HollowAbyss/TheHollowAbyss.png'),
+        mu('TrabajosIndependientes/HollowAbyss/Logo.png'),
+      ],
+    },
+  };
 
   let ov, bd, panel, cur = null;
 
@@ -52,16 +143,16 @@
       return `<video src="${esc(url)}" controls playsinline></video>`;
     return `<iframe src="${esc(url)}" allowfullscreen></iframe>`;
   }
-  function renderVideo(box, id){
+  function renderVideo(box, id, defaultUrl){
     const key = 'aegir_vid_'+id;
-    const url = localStorage.getItem(key);
+    const url = localStorage.getItem(key) || defaultUrl || null;
     box.innerHTML = '';
     if(url){
       const frame = document.createElement('div'); frame.className='vid-frame';
       frame.innerHTML = videoEmbed(url);
       const rm = document.createElement('button'); rm.className='vid-remove'; rm.type='button';
       rm.textContent = '✕ '+t('remove_video');
-      rm.onclick = ()=>{ localStorage.removeItem(key); renderVideo(box,id); };
+      rm.onclick = ()=>{ localStorage.removeItem(key); renderVideo(box,id,defaultUrl); };
       frame.appendChild(rm);
       box.appendChild(frame);
     } else {
@@ -80,7 +171,7 @@
   }
 
   /* ---------- media (images + videos) ---------- */
-  function buildMedia(prefix, images, videos){
+  function buildMedia(prefix, images, videos, defaults){
     const gal = $('#ov-gal'); if(!gal) return;
     for(let i=1;i<=images;i++){
       const s = document.createElement('image-slot');
@@ -88,12 +179,15 @@
       s.setAttribute('shape','rounded');
       s.setAttribute('radius','8');
       s.setAttribute('placeholder', t('drop_img'));
+      const defImg = defaults && defaults.images && defaults.images[i-1];
+      if(defImg) s.setAttribute('src', defImg);
       gal.appendChild(s);
     }
     for(let j=1;j<=videos;j++){
       const vs = document.createElement('div'); vs.className='vid-slot';
       gal.appendChild(vs);
-      renderVideo(vs, prefix+'-vid'+j);
+      const defVid = defaults && defaults.videos && defaults.videos[j-1];
+      renderVideo(vs, prefix+'-vid'+j, defVid || null);
     }
   }
 
@@ -160,7 +254,7 @@
         <div class="gal" id="ov-gal"></div>
       </div>
     </div>`;
-    buildMedia(key, p.images||0, p.videos||0);
+    buildMedia(key, p.images||0, p.videos||0, MEDIA_DEFAULTS[key]);
   }
 
   function buildArea(key){
@@ -180,7 +274,7 @@
     html += '</div>';
     panel.innerHTML = html;
     if(c.builds) buildBuilds(c.builds);
-    if(c.images || c.videos) buildMedia(key, c.images||0, c.videos||0);
+    if(c.images || c.videos) buildMedia(key, c.images||0, c.videos||0, MEDIA_DEFAULTS[key]);
   }
 
   /* ---------- open / close / nav ---------- */
