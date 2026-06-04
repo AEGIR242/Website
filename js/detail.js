@@ -19,11 +19,11 @@
   /* ---------- projects ---------- */
   const PROJECTS = {
     relapse:{ title:'Relapse', type:'relapse_type', long:'relapse_long', pts:'relapse_pts', role:'relapse_role',
-      tags:['Unity','VR','MR','Cyberpunk','Game Design','Interactive Systems','Technical Art'], images:1, videos:3 },
+      tags:['Unity','VR','MR','Cyberpunk','Game Design','Interactive Systems','Technical Art'], images:0, videos:0 },
     rythian:{ title:'Rythian', type:'rythian_type', long:'rythian_long', pts:'rythian_pts', role:'rythian_role',
       tags:['Worldbuilding','Narrative Design','Visual Development','Fantasy','Character Concepts','Environment Concepts'], images:3, videos:2 },
     smk:{ title:'SMK Showreel', type:'smk_type', long:'smk_long', pts:'smk_pts', role:'smk_role',
-      tags:['2D Animation','Video Editing','Motion Design','Mascot Animation','Marketing Visuals','Audiovisual Production'], images:1, videos:2 },
+      tags:['2D Animation','Video Editing','Motion Design','Mascot Animation','Marketing Visuals','Audiovisual Production'], images:1, videos:5 },
   };
   const PORDER = ['relapse','rythian','smk'];
 
@@ -32,7 +32,7 @@
     'game-dev':   { title:'area_1',  desc:'area_d_1', builds:[
                       { title:'gd_relapse', note:'gd_relapse_note', id:'gd-relapse', btn:'download_apk', icon:'↓', disabled:true },
                       { title:'gd_cashout', note:'gd_cashout_note', id:'gd-cashout', btn:'play_web',     icon:'↗', defaultUrl:'https://aegir242.github.io/CashOutPage/' } ] },
-    '2d-anim':    { title:'area_3',  desc:'area_d_3',  videos:2 },
+    '2d-anim':    { title:'area_3',  desc:'area_d_3',  videos:6 },
     '3d-model':   { title:'area_4',  desc:'area_d_4',  images:3 },
     '3d-anim':    { title:'area_5',  desc:'area_d_5',  videos:2 },
     'shaders':    { title:'area_6',  desc:'area_d_6',  process:'shaders_process', images:4 },
@@ -46,16 +46,7 @@
   /* ---------- default media per section ---------- */
   const MEDIA_DEFAULTS = {
     /* ---- projects ---- */
-    relapse: {
-      images: [
-        mu('DiseñoDeMovimiento/Captura de pantalla 2026-05-29 123529.png'),
-      ],
-      videos: [
-        mu('DiseñoDeMovimiento/Movie_001.webm'),
-        mu('DiseñoDeMovimiento/Movie_002.webm'),
-        mu('DiseñoDeMovimiento/Movie_004.webm'),
-      ],
-    },
+    relapse: {},
     rythian: {
       images: [
         mu('Rythian/Captura de pantalla 2023-11-26 181608.png'),
@@ -74,6 +65,9 @@
       videos: [
         mu('SMK/ProyectoFinal (1).mp4'),
         mu('SMK/Animaciones/IntroSMKV9.mp4'),
+        mu('SMK/Animaciones/Animacion2.mp4'),
+        mu('SMK/Animaciones/Animacion3.mp4'),
+        mu('SMK/Animaciones/CharacterAnimationWalk.mp4'),
       ],
     },
     /* ---- areas ---- */
@@ -81,6 +75,10 @@
       videos: [
         mu('Animacion2D/Bolsa (2).mp4'),
         mu('SMK/Animaciones/Animacion1.mp4'),
+        mu('SMK/Animaciones/Animacion2.mp4'),
+        mu('SMK/Animaciones/Animacion3.mp4'),
+        mu('SMK/Animaciones/CharacterAnimationWalk.mp4'),
+        mu('SMK/Animaciones/IntroSMKV9.mp4'),
       ],
     },
     '3d-model': {
@@ -223,6 +221,7 @@
     const p = PROJECTS[key]; if(!p) return;
     const pts = arr(p.pts).map(x=>`<li><span class="ok">[+]</span><span>${esc(x)}</span></li>`).join('');
     const tags = p.tags.map(x=>`<span class="tag">${esc(x)}</span>`).join('');
+    const hasMedia = (p.images||0) + (p.videos||0) > 0;
     panel.innerHTML = bar('~/work/'+key) + `<div class="ov-body">
       <div class="ov-head"><h2>${esc(p.title)}</h2><span class="type">${esc(t(p.type))}</span></div>
       <p class="ov-role">${esc(t(p.role))}</p>
@@ -230,12 +229,9 @@
       <p class="ov-sub">${t('highlights')}</p>
       <ul class="ov-pts">${pts}</ul>
       <div class="ov-tags">${tags}</div>
-      <div class="ov-section">
-        <p class="ov-sub">${t('gallery')}</p>
-        <div class="gal" id="ov-gal"></div>
-      </div>
+      ${hasMedia ? `<div class="ov-section"><p class="ov-sub">${t('gallery')}</p><div class="gal" id="ov-gal"></div></div>` : ''}
     </div>`;
-    buildMedia(key, p.images||0, p.videos||0, MEDIA_DEFAULTS[key]);
+    if(hasMedia) buildMedia(key, p.images||0, p.videos||0, MEDIA_DEFAULTS[key]);
   }
 
   function buildArea(key){
@@ -256,6 +252,21 @@
     panel.innerHTML = html;
     if(c.builds) buildBuilds(c.builds);
     if(c.images || c.videos) buildMedia(key, c.images||0, c.videos||0, MEDIA_DEFAULTS[key]);
+  }
+
+  /* ---------- lightbox ---------- */
+  function openLightbox(src){
+    if(document.getElementById('img-lb')) return;
+    const lb = document.createElement('div'); lb.id='img-lb';
+    const img = document.createElement('img'); img.src=src; img.alt='';
+    const btn = document.createElement('button'); btn.className='lb-close'; btn.type='button'; btn.textContent='✕';
+    lb.appendChild(img); lb.appendChild(btn); document.body.appendChild(lb);
+    const close = ()=>{ lb.remove(); };
+    btn.onclick = e=>{ e.stopPropagation(); close(); };
+    lb.addEventListener('click', e=>{ if(e.target===lb) close(); });
+    document.addEventListener('keydown', function esc(e){
+      if(e.key==='Escape'){ e.stopImmediatePropagation(); close(); document.removeEventListener('keydown',esc,true); }
+    }, true);
   }
 
   /* ---------- open / close / nav ---------- */
@@ -296,9 +307,10 @@
     });
 
     panel.addEventListener('click', e=>{
-      const b = e.target.closest('[data-ov]'); if(!b) return;
-      const a = b.dataset.ov;
-      if(a==='close') hide(); else nav(a==='prev'?-1:1);
+      const b = e.target.closest('[data-ov]');
+      if(b){ const a=b.dataset.ov; if(a==='close') hide(); else nav(a==='prev'?-1:1); return; }
+      const slot = e.target.closest('image-slot');
+      if(slot && slot.hasAttribute('data-filled')){ const src=slot.getAttribute('src'); if(src) openLightbox(src); }
     });
     bd.addEventListener('click', hide);
     ov.addEventListener('click', e=>{ if(e.target===ov) hide(); });
