@@ -19,7 +19,7 @@
   /* ---------- projects ---------- */
   const PROJECTS = {
     relapse:{ title:'Relapse', type:'relapse_type', long:'relapse_long', pts:'relapse_pts', role:'relapse_role',
-      tags:['Unity','VR','MR','Cyberpunk','Game Design','Interactive Systems','Technical Art'], images:0, videos:0 },
+      tags:['Unity','VR','MR','Cyberpunk','Game Design','Interactive Systems','Technical Art'], images:0, videos:2 },
     rythian:{ title:'Rythian', type:'rythian_type', long:'rythian_long', pts:'rythian_pts', role:'rythian_role',
       tags:['Worldbuilding','Narrative Design','Visual Development','Fantasy','Character Concepts','Environment Concepts'], images:3, videos:2,
       docs:[{ title:'rythian_artbook', note:'rythian_artbook_note', url: mu('Rythian/Libro de Arte Definitivo.pdf'), btn:'download_pdf', icon:'↓' }] },
@@ -47,7 +47,12 @@
   /* ---------- default media per section ---------- */
   const MEDIA_DEFAULTS = {
     /* ---- projects ---- */
-    relapse: {},
+    relapse: {
+      videos: [
+        'https://drive.google.com/file/d/1dwOHFH56pM3dnYL98dyp99pwJRT1j3Hg/preview',
+        'https://drive.google.com/file/d/1BbVONdtdMmZnsrG35BL2kbOyy6M-xneg/preview',
+      ],
+    },
     rythian: {
       images: [
         mu('Rythian/Captura de pantalla 2023-11-26 181608.png'),
