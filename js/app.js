@@ -10,7 +10,6 @@
 
   /* ---------- language ---------- */
   let lang = localStorage.getItem('aegir_lang') || 'es';
-  let aboutAnimated = false, typing = false;
 
   function t(key){ return (window.I18N[lang] && window.I18N[lang][key]) ?? key; }
 
@@ -29,33 +28,15 @@
     // language toggle UI
     $$('.lang button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
     // about intro text (managed manually, not by data-i18n)
-    if(!typing) renderAbout(false);
+    renderAbout();
     // let other modules (detail overlay) react to language changes
     window.dispatchEvent(new CustomEvent('aegir:lang', {detail:lang}));
   }
 
-  /* ---------- about typewriter ---------- */
-  function renderAbout(animate){
-    const el = $('#about-type-text'); const cur = $('#about-cursor');
-    if(!el) return;
-    const full = t('about_type');
-    if(animate && !reduceMotion){
-      typing = true; el.textContent=''; cur.classList.remove('blink');
-      let i=0;
-      const tick=()=>{
-        i++; el.textContent = full.slice(0,i);
-        if(i < full.length){ setTimeout(tick, 32); }
-        else { typing=false; cur.classList.add('blink'); }
-      };
-      setTimeout(tick, 260);
-    } else {
-      el.textContent = full; cur.classList.add('blink');
-    }
-  }
-  function maybeTypeAbout(){
-    if(aboutAnimated) return;
-    aboutAnimated = true;
-    renderAbout(true);
+  /* ---------- about intro (static, no typewriter) ---------- */
+  function renderAbout(){
+    const el = $('#about-type-text');
+    if(el) el.textContent = t('about_type');
   }
 
   /* ---------- skills reveal ---------- */
@@ -78,7 +59,6 @@
     if(history.replaceState) history.replaceState(null,'', '#'+name);
     else location.hash = name;
     if(!opts.noScroll) window.scrollTo({top:0, behavior:'auto'});
-    if(name==='about') maybeTypeAbout();
     if(name==='skills') revealSkills();
     closeDrawer();
   }
@@ -211,20 +191,6 @@
     });
   }
 
-  /* ---------- contact form → mailto ---------- */
-  function wireForm(){
-    const form = $('#cform'); if(!form) return;
-    form.addEventListener('submit', e=>{
-      e.preventDefault();
-      const n = $('#cf-name').value.trim();
-      const em = $('#cf-email').value.trim();
-      const m = $('#cf-msg').value.trim();
-      const subject = encodeURIComponent(`Portfolio contact — ${n||'mensaje'}`);
-      const bd = encodeURIComponent(`${m}\n\n— ${n}${em? ' ('+em+')':''}`);
-      window.location.href = `mailto:camriosarrieta@gmail.com?subject=${subject}&body=${bd}`;
-    });
-  }
-
   /* ============================================================
      init
      ============================================================ */
@@ -232,7 +198,6 @@
     applyTweaks();
     buildTweaks();
     applyLang(lang);
-    wireForm();
 
     // nav
     $$('[data-view]').forEach(a=>{

@@ -33,14 +33,37 @@
     'game-dev':   { title:'area_1',  desc:'area_d_1', builds:[
                       { title:'gd_relapse', note:'gd_relapse_note', id:'gd-relapse', btn:'download_apk', icon:'↓', disabled:true },
                       { title:'gd_cashout', note:'gd_cashout_note', id:'gd-cashout', btn:'play_web',     icon:'↗', defaultUrl:'https://aegir242.github.io/CashOutPage/' } ] },
-    '2d-anim':    { title:'area_3',  desc:'area_d_3',  videos:6 },
+    '2d-anim':    { title:'area_3',  desc:'area_d_3',  groups:[
+                      { title:'g2d_1_t', desc:'g2d_1_d', videos:[ mu('Animacion2D/Bolsa (2).mp4') ] },
+                      { title:'g2d_2_t', desc:'g2d_2_d', videos:[
+                        mu('SMK/Animaciones/Animacion1.mp4'),
+                        mu('SMK/Animaciones/Animacion2.mp4'),
+                        mu('SMK/Animaciones/Animacion3.mp4'),
+                        mu('SMK/Animaciones/CharacterAnimationWalk.mp4'),
+                        mu('SMK/Animaciones/IntroSMKV9.mp4'),
+                      ] } ] },
     '3d-model':   { title:'area_4',  desc:'area_d_4',  images:3 },
-    '3d-anim':    { title:'area_5',  desc:'area_d_5',  videos:2 },
-    'shaders':    { title:'area_6',  desc:'area_d_6',  process:'shaders_process', images:4 },
+    '3d-anim':    { title:'area_5',  desc:'area_d_5',  groups:[
+                      { title:'g3d_1_t', desc:'g3d_1_d', videos:[ mu('Animacion3D/Lipsync.mp4') ] },
+                      { title:'g3d_2_t', desc:'g3d_2_d', videos:[ mu('Animacion3D/Rythian/AnimacionFinal.mp4') ] } ] },
+    'shaders':    { title:'area_6',  desc:'area_d_6',  groups:[
+                      { title:'gsh_1_t', desc:'gsh_1_d', images:[
+                        mu('Shaders/ShaderHolograma/Captura de pantalla 2026-05-15 151357.png'),
+                        mu('Shaders/ShaderHolograma/Captura de pantalla 2026-05-15 163639.png'),
+                      ] },
+                      { title:'gsh_2_t', desc:'gsh_2_d', images:[
+                        mu('Shaders/ShaderPixelArt/Captura de pantalla 2026-05-15 164207.png'),
+                        mu('Shaders/ShaderPixelArt/image (1).png'),
+                      ] } ] },
     'pixel-art':  { title:'area_7',  desc:'area_d_7',  images:3 },
     'audio':      { title:'area_8',  desc:'area_d_8',  videos:1 },
     'clips':      { title:'area_9',  desc:'area_d_9',  videos:2 },
-    'audiovisual':{ title:'area_10', desc:'area_d_10', images:3, videos:1 },
+    'audiovisual':{ title:'area_10', desc:'area_d_10', groups:[
+                      { title:'gind_1_t', desc:'gind_1_d', images:[ mu('TrabajosIndependientes/Draikon.png') ] },
+                      { title:'gind_2_t', desc:'gind_2_d', images:[
+                        mu('TrabajosIndependientes/HollowAbyss/TheHollowAbyss.png'),
+                        mu('TrabajosIndependientes/HollowAbyss/Logo.png'),
+                      ] } ] },
   };
   const AORDER = ['game-dev','2d-anim','3d-model','3d-anim','shaders','pixel-art','audio','clips','audiovisual'];
 
@@ -76,36 +99,12 @@
         mu('SMK/Animaciones/CharacterAnimationWalk.mp4'),
       ],
     },
-    /* ---- areas ---- */
-    '2d-anim': {
-      videos: [
-        mu('Animacion2D/Bolsa (2).mp4'),
-        mu('SMK/Animaciones/Animacion1.mp4'),
-        mu('SMK/Animaciones/Animacion2.mp4'),
-        mu('SMK/Animaciones/Animacion3.mp4'),
-        mu('SMK/Animaciones/CharacterAnimationWalk.mp4'),
-        mu('SMK/Animaciones/IntroSMKV9.mp4'),
-      ],
-    },
+    /* ---- areas (2d-anim, 3d-anim, shaders, audiovisual usan groups en AREAS) ---- */
     '3d-model': {
       images: [
         mu('Modelado3D/destornillador.png'),
         mu('Modelado3D/lapicero.png'),
         mu('Modelado3D/Muñeco (2).jpg'),
-      ],
-    },
-    '3d-anim': {
-      videos: [
-        mu('Animacion3D/Lipsync.mp4'),
-        mu('Animacion3D/Rythian/AnimacionFinal.mp4'),
-      ],
-    },
-    shaders: {
-      images: [
-        mu('Shaders/ShaderHolograma/Captura de pantalla 2026-05-15 151357.png'),
-        mu('Shaders/ShaderHolograma/Captura de pantalla 2026-05-15 163639.png'),
-        mu('Shaders/ShaderPixelArt/Captura de pantalla 2026-05-15 164207.png'),
-        mu('Shaders/ShaderPixelArt/image (1).png'),
       ],
     },
     'pixel-art': {
@@ -124,13 +123,6 @@
       videos: [
         mu('Videoclips/Videoclip-La ultima.mp4'),
         mu('Videoclips/Videoclip Lenguajes.mp4'),
-      ],
-    },
-    audiovisual: {
-      images: [
-        mu('TrabajosIndependientes/Draikon.png'),
-        mu('TrabajosIndependientes/HollowAbyss/TheHollowAbyss.png'),
-        mu('TrabajosIndependientes/HollowAbyss/Logo.png'),
       ],
     },
   };
@@ -181,6 +173,24 @@
       gal.appendChild(vs);
       renderVideo(vs, prefix+'-vid'+j, defVid || null);
     }
+  }
+
+  /* ---------- fill a gallery element from URL arrays (used by grouped areas) ---------- */
+  function fillGallery(gal, prefix, images, videos){
+    if(!gal) return;
+    (images||[]).forEach((src,i)=>{
+      const s = document.createElement('image-slot');
+      s.id = 'aegir-'+prefix+'-img'+(i+1);
+      s.setAttribute('shape','rounded');
+      s.setAttribute('radius','8');
+      s.setAttribute('src', src);
+      gal.appendChild(s);
+    });
+    (videos||[]).forEach((src,j)=>{
+      const vs = document.createElement('div'); vs.className='vid-slot';
+      gal.appendChild(vs);
+      renderVideo(vs, prefix+'-vid'+(j+1), src);
+    });
   }
 
   /* ---------- docs (PDF / downloads) ---------- */
@@ -269,13 +279,23 @@
     if(c.builds){
       html += `<div class="ov-section"><p class="ov-sub">${t('lbl_builds')}</p><div id="ov-builds"></div></div>`;
     }
-    if(c.images || c.videos){
+    if(c.groups){
+      c.groups.forEach((g,gi)=>{
+        html += `<div class="ov-section"><p class="ov-sub">${esc(t(g.title))}</p>`;
+        if(g.desc) html += `<p class="ov-long" style="margin:6px 0 14px">${esc(t(g.desc))}</p>`;
+        html += `<div class="gal" id="ov-gal-g${gi}"></div></div>`;
+      });
+    } else if(c.images || c.videos){
       html += `<div class="ov-section"><p class="ov-sub">${t('gallery')}</p><div class="gal" id="ov-gal"></div></div>`;
     }
     html += '</div>';
     panel.innerHTML = html;
     if(c.builds) buildBuilds(c.builds);
-    if(c.images || c.videos) buildMedia(key, c.images||0, c.videos||0, MEDIA_DEFAULTS[key]);
+    if(c.groups){
+      c.groups.forEach((g,gi)=> fillGallery($('#ov-gal-g'+gi), key+'-g'+gi, g.images, g.videos));
+    } else if(c.images || c.videos){
+      buildMedia(key, c.images||0, c.videos||0, MEDIA_DEFAULTS[key]);
+    }
   }
 
   /* ---------- lightbox ---------- */

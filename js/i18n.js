@@ -197,6 +197,24 @@ window.I18N = {
     gd_cashout:"Cash Out",
     gd_cashout_note:"Juego jugable en el navegador",
     shaders_process:"El proceso detrás de cada shader: del concepto y la referencia al desarrollo del efecto, hasta su integración en tiempo real en Unity.",
+
+    /* grupos de galería (áreas) */
+    g2d_1_t:"Un bulto enamorado",
+    g2d_1_d:"Cortometraje animado que atraviesa todas las etapas del pipeline de animación, del concepto al render final.",
+    g2d_2_t:"Mascota SMK — cut-out",
+    g2d_2_d:"Personaje cut-out animado en After Effects como mascota de la empresa SMK.",
+    g3d_1_t:"Ejercicio de lip sync",
+    g3d_1_d:"Ejercicio de sincronización labial en animación 3D.",
+    g3d_2_t:"Rythian",
+    g3d_2_d:"Animación 3D desarrollada para el proyecto Rythian.",
+    gsh_1_t:"Shader de holograma",
+    gsh_1_d:"Shader de efecto holograma en tiempo real desarrollado en Unity.",
+    gsh_2_t:"Shader pixel art",
+    gsh_2_d:"Shader con estética pixel art renderizado sobre fondo verde con el Recorder de Unity para exportar PNG y armar spritesheets de animación, ahorrando tiempo frente a la animación pixel art manual.",
+    gind_1_t:"Draikon",
+    gind_1_d:"Ilustración de personaje realizada para el canal de Twitch RolCamaleon.",
+    gind_2_t:"Hollow Abyss",
+    gind_2_d:"Diseño de UI de la pantalla de inicio para Hollow Abyss, un juego desarrollado en la universidad.",
   },
 
   en: {
@@ -384,5 +402,23 @@ window.I18N = {
     gd_cashout:"Cash Out",
     gd_cashout_note:"Playable in the browser",
     shaders_process:"The process behind each shader: from concept and reference to building the effect and integrating it in real time in Unity.",
+
+    /* gallery groups (areas) */
+    g2d_1_t:"Un bulto enamorado",
+    g2d_1_d:"An animated short film that goes through every stage of the animation pipeline, from concept to final render.",
+    g2d_2_t:"SMK Mascot — cut-out",
+    g2d_2_d:"Cut-out character animated in After Effects as the mascot for the company SMK.",
+    g3d_1_t:"Lip Sync Exercise",
+    g3d_1_d:"A lip sync exercise in 3D animation.",
+    g3d_2_t:"Rythian",
+    g3d_2_d:"3D animation developed for the Rythian project.",
+    gsh_1_t:"Hologram Shader",
+    gsh_1_d:"Real-time hologram effect shader developed in Unity.",
+    gsh_2_t:"Pixel Art Shader",
+    gsh_2_d:"Pixel art style shader rendered over a green background using Unity's Recorder to export PNGs and build animation spritesheets, saving time versus manual pixel art animation.",
+    gind_1_t:"Draikon",
+    gind_1_d:"Character illustration created for the Twitch channel RolCamaleon.",
+    gind_2_t:"Hollow Abyss",
+    gind_2_d:"Start-screen UI design for Hollow Abyss, a game developed at university.",
   },
 };
