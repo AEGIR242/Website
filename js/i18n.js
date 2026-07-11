@@ -40,7 +40,7 @@ window.I18N = {
 
     smk_type:"Audiovisual y Motion Design",
     smk_desc:"Un reel de presentación de empresa desarrollado mediante edición de video, animación 2D, piezas visuales para marketing y animación de mascota.",
-    smk_note:"Animación 2D estilo rubber hose / cut-out para la mascota de la empresa.",
+    smk_note:"Animación 2D estilo cut-out para la mascota de la empresa.",
     smk_role:"Creador Audiovisual · Motion Designer · Animador 2D",
 
     area_1:"Desarrollo de Videojuegos",
@@ -160,12 +160,12 @@ window.I18N = {
     add_video:"añadir",
     remove_video:"quitar video",
 
-    relapse_long:"Relapse es un juego de detectives cyberpunk donde el jugador resuelve un caso a través de interacción inmersiva, exploración espacial y sistemas en tiempo real. La experiencia combina diseño interactivo, desarrollo en Unity y technical art para construir un mundo creíble y reactivo.",
-    rythian_long:"Rythian es un universo narrativo de ficción construido alrededor de naciones elementales, su mitología e identidad visual, unidas por un conflicto compartido contra un antagonista común. El proyecto abarca worldbuilding, diseño narrativo y desarrollo visual de personajes y entornos.",
-    smk_long:"SMK Showreel es un reel de presentación de empresa desarrollado mediante grabación y edición de video, animación 2D y piezas visuales para marketing. Incluye la animación de la mascota de la empresa con un estilo rubber hose / cut-out.",
-    relapse_pts:["Sistemas de interacción en tiempo real","Exploración espacial y navegación inmersiva","Technical art y shaders cyberpunk","Desarrollado en Unity para VR / MR"],
-    rythian_pts:["Naciones elementales y mitología","Identidad visual y worldbuilding","Concepts de personajes y entornos","Conflicto narrativo compartido"],
-    smk_pts:["Showreel de presentación de empresa","Animación de mascota rubber hose / cut-out","Animación 2D y motion design","Piezas visuales de marketing","Grabación y edición de video"],
+    relapse_long:"Relapse es un juego de detectives cyberpunk en VR/MR desarrollado en Unity. Mi trabajo se centró en el technical art y la programación de features: shaders, sistemas de animación en Unity y optimización del rendimiento. Implementé un timeline interactuable que permite al jugador controlar las memorias, e investigué e implementé generación procedural de objetos para ubicar assets en un entorno de realidad mixta según el espacio real del jugador. También sincronicé el audio con los tiempos del juego y fui el referente del equipo en el manejo del repositorio con Git y GitHub.",
+    rythian_long:"Rythian es un universo narrativo de ficción construido en torno a naciones elementales, su mitología e identidad visual. Mi aporte se centró en la ilustración y la construcción del mundo: ilustré personajes, objetos y paisajes, y diseñé el mapamundi que define la geografía y la estructura del universo. En lo audiovisual, en la pieza 3D realicé parte de la animación y la edición de sonido, y en la pieza 2D me encargué de ilustración, guion, montaje en After Effects, propuesta sonora, efectos y postproducción.",
+    smk_long:"SMK Showreel reúne el trabajo audiovisual que desarrollé para la empresa SMK. Creé el rig y las animaciones de su mascota mediante la técnica de animación cut-out, y produje una intro animada del logo para sus videos. Además realicé piezas de marketing para redes sociales de distintas marcas —principalmente de alcohol, constructoras y centros de automovilismo— combinando animación 2D, motion design y edición de video.",
+    relapse_pts:["Timeline interactuable para que el jugador controle las memorias","Generación procedural de objetos en realidad mixta según el espacio real","Shaders y technical art para la estética cyberpunk","Sincronización de audio con los tiempos del juego","Optimización de rendimiento para evitar lag y caídas de FPS","Referente del equipo en control de versiones (Git / GitHub)"],
+    rythian_pts:["Ilustración de personajes, objetos y paisajes","Diseño del mapamundi y la estructura del mundo","Animación 3D y edición de sonido","Pieza 2D: guion, montaje en After Effects y efectos","Propuesta sonora y postproducción"],
+    smk_pts:["Rig y animación de la mascota (técnica cut-out)","Intro animada del logo para videos","Piezas de marketing para redes sociales de marcas","Animación 2D y motion design","Edición de video y producción de contenido"],
 
     area_d_1:"Diseño y desarrollo de videojuegos y sistemas jugables.",
     area_d_2:"Experiencias inmersivas en realidad virtual y mixta.",
@@ -250,7 +250,7 @@ window.I18N = {
 
     smk_type:"Audiovisual & Motion Design",
     smk_desc:"A company presentation reel developed through video editing, 2D animation, visual pieces for marketing and mascot animation.",
-    smk_note:"Rubber hose / cut-out style 2D character animation for the company mascot.",
+    smk_note:"Cut-out style 2D character animation for the company mascot.",
     smk_role:"Audiovisual Creator · Motion Designer · 2D Animator",
 
     area_1:"Game Development",
@@ -365,12 +365,12 @@ window.I18N = {
     add_video:"add",
     remove_video:"remove video",
 
-    relapse_long:"Relapse is a cyberpunk detective game where the player solves a case through immersive interaction, spatial exploration and real-time systems. The experience combines interactive design, Unity development and technical art to build a believable, reactive world.",
-    rythian_long:"Rythian is a fictional narrative universe built around elemental nations, their mythology and visual identity, bound together by a shared conflict against a common antagonist. The project spans worldbuilding, narrative design and the visual development of characters and environments.",
-    smk_long:"SMK Showreel is a company presentation reel developed through video recording and editing, 2D animation and marketing visual pieces. It includes the animation of the company mascot in a rubber hose / cut-out style.",
-    relapse_pts:["Real-time interaction systems","Spatial exploration & immersive navigation","Cyberpunk technical art & shaders","Built in Unity for VR / MR"],
-    rythian_pts:["Elemental nations & mythology","Visual identity & worldbuilding","Character & environment concepts","Shared narrative conflict"],
-    smk_pts:["Company presentation showreel","Rubber hose / cut-out mascot animation","2D animation & motion design","Marketing visual pieces","Video recording & editing"],
+    relapse_long:"Relapse is a cyberpunk VR/MR detective game built in Unity. My work centered on technical art and feature programming: shaders, Unity animation systems and performance optimization. I implemented an interactable timeline that lets the player control the memories, and I researched and implemented procedural object generation to place assets in a mixed-reality environment based on the player's real space. I also synced audio to the game's timing and was the team's go-to for version control with Git and GitHub.",
+    rythian_long:"Rythian is a fictional narrative universe built around elemental nations, their mythology and visual identity. My contribution focused on illustration and worldbuilding: I illustrated characters, objects and landscapes, and designed the world map that defines the geography and structure of the universe. On the audiovisual side, for the 3D piece I handled part of the animation and the sound editing, and for the 2D piece I took care of illustration, script, After Effects compositing, sound design, effects and postproduction.",
+    smk_long:"SMK Showreel gathers the audiovisual work I developed for the company SMK. I created the rig and animations of their mascot using the cut-out animation technique, and produced an animated logo intro for their videos. I also created marketing pieces for the social media of several brands —mainly alcohol, construction and motorsport companies— combining 2D animation, motion design and video editing.",
+    relapse_pts:["Interactable timeline letting the player control the memories","Procedural object generation in mixed reality based on real space","Shaders and technical art for the cyberpunk aesthetic","Audio synchronization with in-game timing","Performance optimization to prevent lag and FPS drops","Team reference for version control (Git / GitHub)"],
+    rythian_pts:["Illustration of characters, objects and landscapes","World map design and worldbuilding structure","3D animation and sound editing","2D piece: script, After Effects compositing and effects","Sound design and postproduction"],
+    smk_pts:["Mascot rig and animation (cut-out technique)","Animated logo intro for videos","Marketing pieces for brands' social media","2D animation and motion design","Video editing and content production"],
 
     area_d_1:"Game design and the development of playable systems.",
     area_d_2:"Immersive virtual and mixed reality experiences.",
