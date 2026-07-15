@@ -27,6 +27,8 @@
     });
     // language toggle UI
     $$('.lang button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+    // CV download links point to the matching-language PDF
+    $$('.js-cv').forEach(a=>a.setAttribute('href', 'CV/CV_Camilo_Rios_'+(lang==='en'?'EN':'ES')+'.pdf'));
     // about intro text (managed manually, not by data-i18n)
     renderAbout();
     // let other modules (detail overlay) react to language changes
