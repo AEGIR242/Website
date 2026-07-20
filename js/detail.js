@@ -64,8 +64,32 @@
                         mu('TrabajosIndependientes/HollowAbyss/TheHollowAbyss.png'),
                         mu('TrabajosIndependientes/HollowAbyss/Logo.png'),
                       ] } ] },
+    'postpro':    { title:'area_11', desc:'area_d_11', groups:[
+                      { title:'gmkt_1_t', desc:'gmkt_1_d', videos:[
+                        mu('MarketingSMK/Videos/Alma72Final.mp4'),
+                        mu('MarketingSMK/Videos/AvivirZueHorizontal.mp4'),
+                        mu('MarketingSMK/Videos/BucleFinal8.mp4'),
+                        mu('MarketingSMK/Videos/GraficaVideoMallorquinV4.mp4'),
+                        mu('MarketingSMK/Videos/GranSalon2Vertical.mp4'),
+                        mu('MarketingSMK/Videos/V1EditGraficaV2.mp4'),
+                        mu('MarketingSMK/Videos/V2EditGraficaV2.mp4'),
+                      ] },
+                      { title:'gmkt_2_t', desc:'gmkt_2_d', videos:[
+                        mu('MarketingSMK/Videos/ClipPensamientoV4.mp4'),
+                        mu('MarketingSMK/Videos/CoctelesSol4.mp4'),
+                      ] },
+                      { title:'gmkt_3_t', desc:'gmkt_3_d', videos:[
+                        mu('MarketingSMK/Videos/PropuestaFinal.mp4'),
+                        mu('MarketingSMK/Videos/RodajeExportacionesV3.mp4'),
+                      ] },
+                      { title:'gmkt_4_t', desc:'gmkt_4_d', videos:[
+                        mu('MarketingSMK/Videos/TipsMujeresV1.mp4'),
+                      ] },
+                      { title:'gmkt_5_t', desc:'gmkt_5_d', videos:[
+                        mu('MarketingSMK/Videos/TestimoniosBladYJoseAudioLimpioV5.mp4'),
+                      ] } ] },
   };
-  const AORDER = ['game-dev','2d-anim','3d-model','3d-anim','shaders','pixel-art','audio','clips','audiovisual'];
+  const AORDER = ['game-dev','2d-anim','3d-model','3d-anim','shaders','pixel-art','audio','clips','audiovisual','postpro'];
 
   /* ---------- default media per section ---------- */
   const MEDIA_DEFAULTS = {

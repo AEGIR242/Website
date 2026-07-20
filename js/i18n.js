@@ -53,6 +53,7 @@ window.I18N = {
     area_8:"Edición de Audio",
     area_9:"Clips Cinemáticos Cortos",
     area_10:"Trabajo Independiente",
+    area_11:"Postproducción Publicitaria",
 
     /* about */
     lbl_about:"Sobre mí",
@@ -177,6 +178,7 @@ window.I18N = {
     area_d_8:"Edición y diseño de audio para piezas y juegos.",
     area_d_9:"Clips cinemáticos cortos y piezas de video.",
     area_d_10:"Proyectos personales e independientes en distintas disciplinas.",
+    area_d_11:"Edición y postproducción de video para campañas publicitarias de distintas marcas.",
 
     lbl_process:"Proceso",
     lbl_builds:"Builds y enlaces",
@@ -215,6 +217,16 @@ window.I18N = {
     gind_1_d:"Ilustración de personaje realizada para el canal de Twitch RolCamaleon.",
     gind_2_t:"Hollow Abyss",
     gind_2_d:"Diseño de UI de la pantalla de inicio para Hollow Abyss, un juego desarrollado en la universidad.",
+    gmkt_1_t:"APIROS",
+    gmkt_1_d:"Edición y postproducción de piezas para la constructora APIROS.",
+    gmkt_2_t:"PINK",
+    gmkt_2_d:"Postproducción de video para la marca de licores PINK.",
+    gmkt_3_t:"Fábrica de Licores de Antioquia",
+    gmkt_3_d:"Edición y postproducción para la Fábrica de Licores de Antioquia (FLA).",
+    gmkt_4_t:"MOVICENTRO",
+    gmkt_4_d:"Postproducción de video para el centro automotriz MOVICENTRO.",
+    gmkt_5_t:"ARGOS Puerto Rico",
+    gmkt_5_d:"Postproducción de testimoniales para ARGOS en Puerto Rico.",
   },
 
   en: {
@@ -263,6 +275,7 @@ window.I18N = {
     area_8:"Audio Editing",
     area_9:"Short-form Cinematic Clips",
     area_10:"Independent Work",
+    area_11:"Advertising Post-production",
 
     lbl_about:"About",
     about_type:"I am an Interactive Designer graduated from Universidad EAFIT.",
@@ -382,6 +395,7 @@ window.I18N = {
     area_d_8:"Audio editing and sound design for pieces and games.",
     area_d_9:"Short-form cinematic clips and video pieces.",
     area_d_10:"Personal, independent projects across disciplines.",
+    area_d_11:"Video editing and post-production for advertising campaigns across several brands.",
 
     lbl_process:"Process",
     lbl_builds:"Builds & links",
@@ -420,5 +434,15 @@ window.I18N = {
     gind_1_d:"Character illustration created for the Twitch channel RolCamaleon.",
     gind_2_t:"Hollow Abyss",
     gind_2_d:"Start-screen UI design for Hollow Abyss, a game developed at university.",
+    gmkt_1_t:"APIROS",
+    gmkt_1_d:"Editing and post-production of pieces for the construction company APIROS.",
+    gmkt_2_t:"PINK",
+    gmkt_2_d:"Video post-production for the spirits brand PINK.",
+    gmkt_3_t:"Fábrica de Licores de Antioquia",
+    gmkt_3_d:"Editing and post-production for La Fábrica de Licores de Antioquia (FLA).",
+    gmkt_4_t:"MOVICENTRO",
+    gmkt_4_d:"Video post-production for the automotive center MOVICENTRO.",
+    gmkt_5_t:"ARGOS Puerto Rico",
+    gmkt_5_d:"Post-production of testimonial pieces for ARGOS in Puerto Rico.",
   },
 };
